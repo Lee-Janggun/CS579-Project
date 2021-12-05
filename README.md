@@ -16,7 +16,7 @@ Final Project for CS579 Computational Linguistics, Fall 2021
 ### NLTK
 
 * Install [NLTK](https://www.nltk.org/install.html).
-* Download the `cmudict` corpus. Run the following simple script. This will download only the needed data
+* Download the `cmudict` corpus. Run the following simple script. This will download only the nessecary data.
 
 ```python
 import nltk
