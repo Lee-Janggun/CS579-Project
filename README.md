@@ -9,7 +9,7 @@ Final Project for CS579 Computational Linguistics, Fall 2021
 
 ### Python 3
 * Install [Python 3](https://www.python.org/downloads/).
-* Testing was done with Python 3.9.5. Recommend Python 3.7 or later.
+* Implementation was done with Python 3.9.5. Recommend Python 3.7 or later.
 
 ### Prolog
 
