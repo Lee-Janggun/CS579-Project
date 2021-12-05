@@ -5,7 +5,7 @@ def main():
     while(True):
         print("Type an English word you want to translate.")
         eng_word = input("English word, or N to exit: ")
-        if not eng_word.lower().strip() == 'n':
+        if eng_word.lower().strip() == 'n':
             print("Thanks for trying Konglog!")
             exit(0)
         print("Translating to Konglish. This may take a bit...")
