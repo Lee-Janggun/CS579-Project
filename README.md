@@ -1,4 +1,4 @@
-# Konglog: Speak your favorite Konglish correctly with Prolog
+# Konglog: Write your favorite Konglish correctly with Prolog
 
 Final Project for CS579 Computational Linguistics, Fall 2021
 
