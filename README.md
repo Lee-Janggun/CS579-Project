@@ -22,7 +22,7 @@ Final Project for CS579 Computational Linguistics, Fall 2021
 import nltk
 nltk.download('cmudict')
 ```
-* If you get `[SSL:CERTIFICATE_VERIFY_FAILED]`, check [this comment](https://github.com/gunthercox/ChatterBot/issues/930#issuecomment-322111087).
+* If the download doesn't start with `[SSL:CERTIFICATE_VERIFY_FAILED]`, check [this comment](https://github.com/gunthercox/ChatterBot/issues/930#issuecomment-322111087) for a solution.
 
 ## API:
 <!-- TODO -->
