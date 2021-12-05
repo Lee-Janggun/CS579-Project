@@ -9,7 +9,7 @@ Final Project for CS579 Computational Linguistics, Fall 2021
 
 ### Python 3
 * Install [Python 3](https://www.python.org/downloads/).
-* Implementation was done with Python 3.9.5. `swiplserver` is tested on 3.7 and above, and NLTK only supports up to 3.9.
+* `swiplserver` is tested on 3.7 and above, and NLTK only supports up to 3.9, so get a version in between.
 
 ### Prolog
 
