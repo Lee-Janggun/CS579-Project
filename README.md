@@ -7,6 +7,10 @@ Final Project for CS579 Computational Linguistics, Fall 2021
 
 ## Dependencies:
 
+###
+* Install [Python](https://www.python.org/downloads/).
+* Testing was done with Python 3.9.5. Some previous versions will probably work, but Prolog doesn't support Python 3.10, so using Python < 3.10 is recommneded.
+
 ### Prolog
 
 * Install [SWI-Prolog](https://www.swi-prolog.org/Download.html).
