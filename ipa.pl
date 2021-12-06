@@ -351,17 +351,6 @@ ipa_to_kr_moem([], [], true).
 ipa_to_kr_moem([], [], false).
 
 %% 제1항 무성 파열음 ([p], [t], [k])
-% 1. 짧은 모음 다음의 어말 무성 파열음([p], [t], [k])은 받침으로 적는다.
-% This rule cannot be fully implemented as CMU does not distinguish short/long vowels
-
-ipa_to_kr_moem(X, [H|[H1|T]], B) :-
-    payul(H),
-    ipa_kr(H_Kor, H1, B),
-    is_moem(true, H_Kor),
-    is_short(H1),
-    ipa_kr_not_moem_bot(H, P_Kor),
-    ipa_to_kr_moem(X_new, T, true),
-    X = [P_Kor | [H_Kor|X_new]].
 
 % 2: 짧은 모음과 유음·비음 이외의 자음 사이에 오는 무성 파열음은 받침으로 적는다.
 % This rule cannot be fully implemented as CMU does not distinguish short/long vowels
@@ -382,13 +371,13 @@ ipa_to_kr_moem(X, [H|[H1|T]], B) :-
     [H_Kor|_] = HT,
     ipa_kr_not_moem_word(H1, Pa_Kor),
     ipa_to_kr_moem(X_new, T, false),
-    X = [H_Kor | [Pa_Kor|X_new]].
+    X = [H_Kor|[Pa_Kor|X_new]].
 
 ipa_to_kr_moem(X, [H|T], false) :-
     payul(H),
     ipa_kr_not_moem_word(H, H_Kor),
     ipa_to_kr_moem(X_new, T, false),
-    X = [H_Kor | X_new].
+    X = [H_Kor|X_new].
 
 %% 제2항 유성 파열음([b], [d], [g])
 % 어말과 모든 자음 앞에 오는 유성 파열음은 '으'를 붙여 적는다.
@@ -396,7 +385,7 @@ ipa_to_kr_moem(X, [H|T], false) :-
     yu_payul(H),
     ipa_kr_not_moem_word(H, H_Kor),
     ipa_to_kr_moem(X_new, T, false),
-    X = [H_Kor | X_new].
+    X = [H_Kor|X_new].
 
 %% 제3항 마찰음([s], [z], [f], [v], [θ], [ð], [ʃ], [ʒ])
 % 1. 어말 또는 자음 앞의 [s], [z], [f], [v], [θ], [ð]는 '으'를 붙여 적는다.
@@ -409,7 +398,7 @@ ipa_to_kr_moem(X, [H|[sh|T]], B) :-
     is_moem(true, H_Kor),
     get_sh_ver(H_Kor, Sh_ver),
     ipa_to_kr_moem(X_new, T, false),
-    X = [Sh_ver | X_new].
+    X = [Sh_ver|X_new].
 
 % 3. 어말 또는 자음 앞의 [ʒ]는 '지'로 적고, 모음 앞의 [ʒ]는 'ㅈ'으로 적는다.
 % This rule is subsumed by 제 2장 표기 일람표.
@@ -430,14 +419,7 @@ ipa_to_kr_moem(X, [ng|[H|T]], true) :-
     ipa_kr(H_Kor, H, false),
     is_moem(true, H_Kor),
     ipa_to_kr_moem(X_new, T, true),
-    X = ['ㅇㅇ' | [H_Kor|X_new]].
-
-%% 제2장 표기 일람표. 표 1 
-ipa_to_kr_moem(X, [H|T], B) :-
-    ipa_kr(H_Kor, H, B),
-    is_moem(B_new, H_Kor),
-    ipa_to_kr_moem(X_new, T, B_new),
-    X = [H_Kor | X_new].
+    X = ['ㅇㅇ'|[H_Kor|X_new]].
 
 %% 제6항 유음([l])
 % 1. 어말 또는 자음 앞의 [l]은 받침으로 적는다.
@@ -450,26 +432,26 @@ ipa_to_kr_moem(X, [H|[l|[H1|T]]], B) :-
     is_moem(true, H_Kor),
     not_bi(H1),
     ipa_to_kr_moem(X_new, [H1|T], false),
-    X = [H_Kor | [ㄹㄹ|X_new]].
+    X = [H_Kor|[ㄹㄹ|X_new]].
 
 ipa_to_kr_moem(X, [H|[l|T]], B) :-
     ipa_kr(H_Kor, H, B),
     bi(H),
     ipa_to_kr_moem(X_new, T, false),
-    X = [H_Kor | [ㄹㄹ|X_new]].
+    X = [H_Kor|[ㄹㄹ|X_new]].
 
 ipa_to_kr_moem(X, [H|[l|[H1|T]]], B) :-
     ipa_kr(H_Kor, H, B),
     is_moem(true, H_Kor),
     bi(H1),
     ipa_to_kr_moem(X_new, [H1|T], false),
-    X = [H_Kor | [ㄹ|X_new]].
+    X = [H_Kor|[ㄹ|X_new]].
 
 ipa_to_kr_moem(X, [H|[l|T]], B) :-
     ipa_kr(H_Kor, H, B),
     bi(H),
     ipa_to_kr_moem(X_new, T, false),
-    X = [H_Kor | [ㄹㄹ|X_new]].
+    X = [H_Kor|[ㄹㄹ|X_new]].
 
 %% 제7항 장모음
 %  장모음의 장음은 따로 표기하지 않는다.
@@ -538,6 +520,26 @@ ipa_to_kr_moem(X, [H|[y|T]], B) :-
     get_j_moem_kor(H, J_Kor),
     ipa_to_kr_moem(X_new, T, false),
     X = [J_Kor|X_new].
+
+%% 제2장 표기 일람표. 
+ipa_to_kr_moem(X, [H|T], B) :-
+    ipa_kr(H_Kor, H, B),
+    is_moem(B_new, H_Kor),
+    ipa_to_kr_moem(X_new, T, B_new),
+    X = [H_Kor | X_new].
+
+%%% Entry points.
+% 1. 짧은 모음 다음의 어말 무성 파열음([p], [t], [k])은 받침으로 적는다.
+% This rule cannot be fully implemented as CMU does not distinguish short/long vowels
+% Instead, diphthong and some vowels are considered 'short'.
+ipa_to_kr(X, [H|[H1|T]]) :-
+    payul(H),
+    ipa_kr(H_Kor, H1, false),
+    is_moem(true, H_Kor),
+    is_short(H1),
+    ipa_kr_not_moem_bot(H, P_Kor),
+    ipa_to_kr_moem(X_new, T, true),
+    X = [P_Kor|[H_Kor|X_new]].
 
 %% 3장 3항 2. 어말의 [ʃ]는 '시'로 적고, 자음 앞의 [ʃ]는 '슈'로, 모음 앞의 [ʃ]는 뒤따르는 모음에 따라 '샤', '섀', '셔', '셰', '쇼', '슈', '시'로 적는다.
 %% Need special case to handle just this

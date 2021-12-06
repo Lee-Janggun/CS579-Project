@@ -32,18 +32,19 @@ def eng_to_kong(eng_word: str)-> list[str]:
     prolog_arg_aras = "[" + prolog_arg_aras[1:]
 
 
-    # Execute Prolog Query
+    print(prolog_arg_aras)
+    # Execute Prolog query
     with PrologMQI() as mqi:
         with mqi.create_thread() as prolog_thread:
             assert(prolog_thread.query("consult(\"ipa.pl\")"))
             prolog_res = prolog_thread.query(f"ipa_to_kr(X,{prolog_arg_aras})")
     
+    # Parse results
     jamo_lists = []
     for jls in prolog_res:
         temp = jls['X']
         temp.reverse()
         jamo_lists.append(temp)
-    # Parse results
     jamo_all = []
     for jamo_list in jamo_lists:
         temp_jamo_all = [""]
@@ -58,8 +59,10 @@ def eng_to_kong(eng_word: str)-> list[str]:
                         temp.append(s + jamo)
                 temp_jamo_all = temp
         jamo_all.extend(temp_jamo_all)
+
     # Combine jamos into Konglish word
     jamo_all.sort(key = lambda x : len(x))
+    print(jamo_all)
     for jamos in jamo_all:
         try: 
             return join_jamos(jamos, False)

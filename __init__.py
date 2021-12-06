@@ -10,7 +10,7 @@ def main():
             exit(0)
         print("Translating to Konglish. This may take a bit...")
         kongs = konglog.eng_to_kong(eng_word)
-        print(f"{eng_word} is translated into {kongs}")
+        print(f"\"{eng_word}\" is translated into \"{kongs}\"")
         print()
 
 if __name__ == "__main__":
