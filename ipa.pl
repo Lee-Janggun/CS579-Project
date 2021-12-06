@@ -17,6 +17,7 @@ is_moem(true, [ㅏㅇㅜ, ㅇㅏㅇㅜ]).
 is_moem(true, [ㅏㅇㅣ, ㅇㅏㅇㅣ]).
 is_moem(true, [ㅑ, ㅇㅑ]).
 is_moem(true, [ㅓ, ㅇㅓ]).
+is_moem(true, [ㅓ, ㅇㅓ, ""]).
 is_moem(true, [ㅕ, ㅇㅕ]).
 is_moem(true, [ㅗ, ㅇㅗ]).
 is_moem(true, [ㅛ, ㅇㅛ]).
@@ -70,7 +71,7 @@ is_moem(false, ㅎ).
 
 ipa_kr_not_moem(aa, [ㅏ, ㅇㅏ]).
 ipa_kr_not_moem(ae, [ㅐ, ㅇㅐ]).
-ipa_kr_not_moem(ah, [ㅓ, ㅇㅓ]).
+ipa_kr_not_moem(ah, [ㅓ, ㅇㅓ, ""]).
 ipa_kr_not_moem(ao, [ㅗ, ㅇㅗ]).
 ipa_kr_not_moem(aw, [ㅏㅇㅜ, ㅇㅏㅇㅜ]).
 ipa_kr_not_moem(ax, [ㅓ, ㅇㅓ]).
@@ -454,7 +455,7 @@ ipa_to_kr_moem(X, [H|[l|T]], B) :-
     X = [H_Kor|[ㄹㄹ|X_new]].
 
 %% 제7항 장모음
-%  장모음의 장음은 따로 표기하지 않는다.
+% 장모음의 장음은 따로 표기하지 않는다.
 % Nothing to do here. Korean has no notation for long vowels.
 
 %% 제8항 중모음
