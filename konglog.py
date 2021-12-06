@@ -31,8 +31,6 @@ def eng_to_kong(eng_word: str)-> list[str]:
         prolog_arg_aras =  "," + phe.lower() + prolog_arg_aras
     prolog_arg_aras = "[" + prolog_arg_aras[1:]
 
-
-    print(prolog_arg_aras)
     # Execute Prolog query
     with PrologMQI() as mqi:
         with mqi.create_thread() as prolog_thread:
@@ -62,7 +60,6 @@ def eng_to_kong(eng_word: str)-> list[str]:
 
     # Combine jamos into Konglish word
     jamo_all.sort(key = lambda x : len(x))
-    print(jamo_all)
     for jamos in jamo_all:
         try: 
             return join_jamos(jamos, False)
