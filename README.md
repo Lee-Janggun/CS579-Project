@@ -42,6 +42,18 @@ def main():
 
 For a more complete example, try the script in [`__init__.py`](__init__.py) with `python3 __init__.py`! This will create a CLI where the user can type in words to translate as below.
 
+```shell
+python3 __init__.py
+Welcome to Konglog mini example.
+Type an English word you want to translate.
+English word, or N to exit: shrimp
+Translating to Konglish. This may take a bit...
+"shrimp" is translated into "슈림프"
+
+Type an English word you want to translate.
+English word, or N to exit: N
+Thanks for trying Konglog!
+```
 
 
 ## Structure:
