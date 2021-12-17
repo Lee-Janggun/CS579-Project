@@ -44,6 +44,7 @@ def eng_to_kong(eng_word: str)-> list[str]:
         for jls in prolog_res:
             temp = jls['X']
             temp.reverse()
+            jamo_lists.append(temp)
     except TypeError:
         raise KeyError
 

@@ -40,7 +40,8 @@ def main():
     print(konglog.eng_to_kong(word))
 ```
 
-For a more complete example, try the script in [`__init__.py`].
+For a more complete example, try the script in [`__init__.py`](__init__.py) with `python3 __init__.py`! This will create a CLI where the user can type in words to translate as below.
+
 
 
 ## Structure:
