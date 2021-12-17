@@ -1,9 +1,9 @@
 # Konglog: Write your favorite Konglish correctly with Prolog
 
-Final Project for CS579 Computational Linguistics, Fall 2021
+Final Project for CS579 Computational Linguistics at KAIST, Fall 2021, by Janggun Lee.
 
 ## Introduction:
-<!-- TODO -->
+Konglog is an implementation of the [Korean Loanword Orthography](https://kornorms.korean.go.kr/m/m_regltn.do#a) in Prolog and Python. It aims to faifully encode the rules of the orthography, and provide a simple API for all to use.
 
 ## Dependencies:
 
@@ -20,7 +20,7 @@ Final Project for CS579 Computational Linguistics, Fall 2021
 ### NLTK
 
 * Install [NLTK](https://www.nltk.org/install.html).
-* Download the `cmudict` corpus. Run the following simple script. This will download only the nessecary data.
+* Download the `cmudict` corpus, and run the following Python script. This will download only the nessecary data.
 
 ```python
 import nltk
@@ -29,7 +29,21 @@ nltk.download('cmudict')
 * If the download doesn't start with `[SSL:CERTIFICATE_VERIFY_FAILED]`, check [this comment](https://github.com/gunthercox/ChatterBot/issues/930#issuecomment-322111087) for a solution.
 
 ## API:
-<!-- TODO -->
+Konglog provides a simple function, `eng_to_kong` that takes in a english word as input, and returns the Konglish translation as output. A very simple example is shown below.
+
+```python
+import konglog
+
+def main():
+    word = "shrimp"
+
+    print(konglog.eng_to_kong(word))
+```
 
 ## Structure:
-<!-- TODO -->
+Konglog has three main steps in its architecture, depicted in the picture below.
+![Architecture](architecture.png)
+
+1. First, the input word is translated into phonems by looking up the CMU pronounciation dictionary, provided by NLTK.
+2. Second, the phonems are trasnalted into jaem and moems.
+3. Finally, the jaem and moems are combined into one. The tools for this combination are in [unicode.py](unicode.py), and is taken from [`hangulutils`](https://github.com/kaniblu/hangul-utils)

@@ -9,17 +9,17 @@ def eng_to_kong(eng_word: str)-> list[str]:
     not have unique results, the result will be a list.
     For example, "hello" will be translated into [허로, 헐로]
 
+    # Panics
+    When given a english word that it cannot translate, `eng_to_kong` will raise an Not_found exception.
+
     Example
     ```python
     import konglog
 
     def main():
-        word = "hello"
+        word = "shrimp"
 
-        kong_words = konglog.eng_to_kong(word)
-
-        for kong in kong_words:
-            print(kong)
+        print(konglog.eng_to_kong(word))
     ```
     """
 
@@ -42,7 +42,7 @@ def eng_to_kong(eng_word: str)-> list[str]:
     for jls in prolog_res:
         temp = jls['X']
         temp.reverse()
-        jamo_lists.append(temp)
+
     jamo_all = []
     for jamo_list in jamo_lists:
         temp_jamo_all = [""]
