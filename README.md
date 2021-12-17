@@ -61,5 +61,5 @@ Konglog has three main steps in its architecture, depicted in the picture below.
 ![Architecture](architecture.png)
 
 1. First, the input word is translated into phonems by looking up the CMU pronounciation dictionary, provided by NLTK.
-2. Second, the phonems are trasnalted into jaem and moems.
-3. Finally, the jaem and moems are combined into one. The tools for this combination are in [unicode.py](unicode.py), and is taken from [`hangulutils`](https://github.com/kaniblu/hangul-utils)
+2. Second, the phonems are trasnalted into jaem and moems. Translation rules are provided in [`ipa.pl`](ipa.pl)
+3. Finally, the jaem and moems are combined into one. The tools for this combination are in [`unicode.py`](unicode.py), and is taken from [`hangulutils`](https://github.com/kaniblu/hangul-utils)
