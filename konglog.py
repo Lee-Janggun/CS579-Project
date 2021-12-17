@@ -1,3 +1,4 @@
+from nltk.probability import KneserNeyProbDist
 from swiplserver import PrologMQI
 from nltk.corpus import cmudict
 from unicode import join_jamos 
@@ -10,7 +11,7 @@ def eng_to_kong(eng_word: str)-> list[str]:
     For example, "hello" will be translated into [허로, 헐로]
 
     # Panics
-    When given a english word that it cannot translate, `eng_to_kong` will raise an Not_found exception.
+    When given a english word that it cannot translate, `eng_to_kong` will raise an KeyError.
 
     Example
     ```python
@@ -39,9 +40,12 @@ def eng_to_kong(eng_word: str)-> list[str]:
     
     # Parse results
     jamo_lists = []
-    for jls in prolog_res:
-        temp = jls['X']
-        temp.reverse()
+    try:
+        for jls in prolog_res:
+            temp = jls['X']
+            temp.reverse()
+    except TypeError:
+        raise KeyError
 
     jamo_all = []
     for jamo_list in jamo_lists:

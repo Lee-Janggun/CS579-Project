@@ -9,9 +9,12 @@ def main():
             print("Thanks for trying Konglog!")
             exit(0)
         print("Translating to Konglish. This may take a bit...")
-        kongs = konglog.eng_to_kong(eng_word)
-        print(f"\"{eng_word}\" is translated into \"{kongs}\"")
-        print()
+        try:
+            kongs = konglog.eng_to_kong(eng_word)
+            print(f"\"{eng_word}\" is translated into \"{kongs}\"")
+            print()
+        except KeyError:
+            print(f"Cannot translate word. Please try another")
 
 if __name__ == "__main__":
     main()
