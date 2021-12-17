@@ -40,6 +40,9 @@ def main():
     print(konglog.eng_to_kong(word))
 ```
 
+For a more complete example, try the script in [`__init__.py`].
+
+
 ## Structure:
 Konglog has three main steps in its architecture, depicted in the picture below.
 ![Architecture](architecture.png)
