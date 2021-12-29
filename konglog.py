@@ -6,12 +6,11 @@ from unicode import join_jamos
 def eng_to_kong(eng_word: str)-> list[str]: 
     """
     Translate given English word into Korean into matching pronounciation,
-    matching the English Loanword Orthography. Since the orthography does 
-    not have unique results, the result will be a list.
-    For example, "hello" will be translated into [허로, 헐로]
+    matching the English Loanword Orthography.
+    For example, "hello" will be translated into 헐로.
 
     # Panics
-    When given a english word that it cannot translate, `eng_to_kong` will raise an KeyError.
+    When given a english word that it cannot translate, `eng_to_kong` will raise a KeyError.
 
     Example
     ```python
